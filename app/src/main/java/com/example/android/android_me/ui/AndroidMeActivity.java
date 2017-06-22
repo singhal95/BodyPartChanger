@@ -17,6 +17,7 @@
 package com.example.android.android_me.ui;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -48,5 +49,11 @@ public class AndroidMeActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().replace(R.id.headimage,bodyPartFragment).commit();
         fragmentManager.beginTransaction().replace(R.id.midimageimage,bodyPartFragment1).commit();
         fragmentManager.beginTransaction().replace(R.id.legimage,bodyPartFragment2).commit();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
     }
 }

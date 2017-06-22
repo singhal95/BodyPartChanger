@@ -19,6 +19,7 @@ public class BodyPartFragment extends Fragment {
 
     private List<Integer> imgaeid;
      private int imageinex;
+    ImageView imageView;
 
     public void setImgaeid(List<Integer> imgaeid) {
         this.imgaeid = imgaeid;
@@ -34,10 +35,23 @@ public class BodyPartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_body_part,null);
-        if(imgaeid!=null) {
-            ImageView imageView = (ImageView) view.findViewById(R.id.body_part);
+        View view = inflater.inflate(R.layout.fragment_body_part, null);
+        if (imgaeid != null) {
+            imageView = (ImageView) view.findViewById(R.id.body_part);
             imageView.setImageResource(imgaeid.get(imageinex));
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (imageinex == imgaeid.size()-1) {
+                        imageinex = 0;
+                        imageView.setImageResource(imgaeid.get(imageinex));
+                    } else {
+                        imageinex++;
+                        imageView.setImageResource(imgaeid.get(imageinex));
+                    }
+                }
+            });
         }
         return view;
     }
